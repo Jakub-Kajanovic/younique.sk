@@ -1,0 +1,1 @@
+<button {{$attributes(['class' => 'rounded-md px-3 py-3 bg-[#6A9AF8] text-[#fff] hover:scale-110 hover:duration-700 hover:bg-[#6A9AF9]'])}}><a href="{{$slot}}">{{$slot}}</a></button>
