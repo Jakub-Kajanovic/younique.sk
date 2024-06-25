@@ -11,10 +11,10 @@ class AuthController extends Controller
 
     public function index(){
         Auth::user();
-        return view('Admin.index');
+        return view('admin.index');
     }
     public function create(){
-      return view('Admin.create');
+      return view('admin.create');
     }
 
     public function store(Request $request){
