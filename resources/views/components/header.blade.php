@@ -15,7 +15,7 @@
     <nav class="nav container">
         <div class="nav__data">
             <a href="#" class="nav__logo">
-                <img src="{{Vite::asset('resources/images/logo.svg')}}" alt="Logo of Younique in SVG format">
+                <img src="/images/logo.svg" alt="Logo of Younique in SVG format">
             </a>
             <div class="nav__toggle" id="nav-toggle">
                 <i class="ri-menu-line nav__toggle-menu"></i>
