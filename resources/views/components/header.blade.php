@@ -6,9 +6,11 @@
     $podcasts = App\Models\Podcast::all();
 @endphp
 <header class="header">
+    @auth
     <div class="bg-[gray] w-full py-1 px-6">
         <a class="text-sm font-bold" href="{{route('dashboard')}}">Admin Dashboard</a> 
     </div>
+    @endauth
 <div class="flex justify-between items-center container mx-auto gap-20">
     <nav class="nav container">
         <div class="nav__data">
@@ -187,7 +189,7 @@
                 </li>
 
                 <li>
-                    <a href="#" class="nav__link">Pricing</a>
+                    <a href="{{route('o-nas')}}" class="nav__link">O nás</a>
                 </li>
 
                 <!--=============== DROPDOWN 3 ===============-->
