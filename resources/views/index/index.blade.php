@@ -189,13 +189,12 @@
             <x-heading>Ako sa im náš program páčil?</x-heading>
         </div>
         <div class="h-auto flex mx-auto p-8">
-            <x-swiper-mix slides-per-view="3"/>
+            <x-swiper-mix slides-per-view="3" class="hidden lg:flex"/>
+            <x-swiper-mix slides-per-view="1" class="lg:hidden flex"/>
         </div>
         <div class="mx-auto container text-center py-20">
             <x-button-primary>Pripojiť sa na kurz</x-button-primary>
         </div>
     </section>
-    <x-footer/>
 </x-layout>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

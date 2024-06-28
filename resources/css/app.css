@@ -13,6 +13,7 @@
 
   body {
     font-family: "Poppins", sans-serif;
+    color: #424242;
   }
 
   :root {
@@ -367,27 +368,27 @@ transition: 0.4s;
 
 /* Main Hero */
 .main {
-  background-image: url('/resources/images/fingerLightBlue.png');
+  background-image: url("/public/images/fingerLightBlue.png");
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
 }
 .blue-finger {
-  background-image: url('/resources/images/fingerLightBlue.png');
+  background-image: url("/public/images/fingerLightBlue.png");
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: 20%;
   background-position-x: right;
 }
 .purple-finger {
-  background-image: url('/resources/images/fingerFialova.png');
+  background-image: url('/public/images/fingerFialova.png');
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: 20%;
   background-position-x: right;
 }
 .job-cast {
-  background-image: url('/resources/images/background.png');
+  background-image: url('/public/images/background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 40%;
@@ -453,4 +454,49 @@ swiper-container {
   }to{
       left: 100%;
   }
+}
+
+/* card flip */
+.wrapper,
+.single-card{
+  height: 450px;
+  max-width: 300px;
+  margin: auto;
+  position: relative;
+}
+.wrapper {
+  perspective: 900px;
+}
+.single-card {
+  text-align: center;
+  transition: all 1.5s cubic-bezier(0.7, -.5, 0.3, 1.8 );
+  transform-style: preserve-3d;
+}
+.wrapper:hover .single-card{
+  transform: rotateY(180deg);
+}
+.front,
+.back{
+  width: 300px;
+  position: relative;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+.front{
+  cursor: pointer;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 50px;
+  background-color: #fff;
+}
+.back{
+  transform: rotateY(180deg);
+  position:absolute;
+  border-radius: 50px;
+  height: 450px;
+  background: #fff;
+}
+.content{
+  padding-top: 25%;
 }

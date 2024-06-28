@@ -1,0 +1,1 @@
+<div {{$attributes(['class' => 'hover:bg-[#5A87DF] rounded-md bg-lightBlue text-[white] px-4 py-2 cursor-pointer'])}}>{{$slot}}</div>

@@ -1,0 +1,1 @@
+<input type="{{$slot}}" name="{{$slot}}" id="{{$slot}}" placeholder="{{$slot}}" class="w-full rounded-lg border border-lightBlue text-[black] text-sm px-4 py-4">

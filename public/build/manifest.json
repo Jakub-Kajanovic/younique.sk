@@ -1,0 +1,25 @@
+{
+  "public/images/background.png": {
+    "file": "assets/background-bLqPRW_k.png",
+    "src": "public/images/background.png"
+  },
+  "public/images/fingerFialova.png": {
+    "file": "assets/fingerFialova-B97ObdSp.png",
+    "src": "public/images/fingerFialova.png"
+  },
+  "public/images/fingerLightBlue.png": {
+    "file": "assets/fingerLightBlue-DRolyskZ.png",
+    "src": "public/images/fingerLightBlue.png"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CHthQNxW.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-B5nUP_ad.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}

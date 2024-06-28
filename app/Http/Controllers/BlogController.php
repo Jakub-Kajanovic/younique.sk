@@ -15,13 +15,14 @@ class BlogController extends Controller
         return view('blog.index', compact('blogs',));
     }
 
-    public function create()
+    public function create(Blog $blog)
     {
         if (!Auth::check()) {
+
             return redirect()->route('login')->with('error', 'Please login to create a blog.');
         }
         $categories = Category::all();
-        return view('blog.create', compact('categories'));
+        return view('blog.create', compact('categories','blog'));
     }
     public function store(Request $request)
     {
@@ -34,7 +35,8 @@ class BlogController extends Controller
             'content' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'author' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'featured_text' => 'required|max:255',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $file = $request->file('image');
@@ -68,17 +70,18 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         $data = $request->validate([
-            'title' => 'required|unique:blogs|max:255',
+            'title' => 'required|max:255',
             'content' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'author' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'featured_text' => 'required|max:255',
         ]);
         $file = $request->file('image');
         $path = $file->store('public/images');
         $data['image'] = str_replace('public/', '', $path);
         $blog->update($data);
-        return redirect()->route('blog.edit', $blog->id)->with('success', 'Blog updated successfully.');
+        return redirect()->route('blog.edit', $blog->slug)->with('success', 'Blog updated successfully.');
     }
 
     /**

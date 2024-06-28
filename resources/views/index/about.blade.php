@@ -1,22 +1,24 @@
 <x-layout>
-<section class="mx-auto container flex flex-col items-center gap-10 purple-finger p-8">
+<section class="purple-finger">
+<div class="mx-auto container flex flex-col items-center gap-10 p-8">
     <h2 class="text-md text-center text-lightBlue lg:py-10">O nás</h2>
-<x-heading class="text-center">Lorem ipsum dolor i domeis i pandre</x-heading>
-<img src="https://placehold.co/1200x500" class="rounded-xl" alt="">
-<x-box>
-    <div class="flex flex-row gap-10">
-        <h3 class="font-bold text-2xl">200 + Mladých</h3>
-    </div>
-    <div class="flex flex-row gap-10">
-        <h3 class="font-bold text-2xl">120 + Dospelých</h3>
-    </div>
-    <div class="flex flex-row gap-10">
-        <h3 class="font-bold text-2xl">98% Spokojných klientov</h3>
-    </div>
-    <div class="flex flex-row gap-10">
-        <h3 class="font-bold text-2xl">+ 600h Poradenstva</h3>
-    </div>
-</x-box>
+    <x-heading class="text-center">Lorem ipsum dolor i domeis i pandre</x-heading>
+    <img src="https://placehold.co/1200x500" class="rounded-xl" alt="">
+    <x-box>
+        <div class="flex flex-row gap-10">
+            <h3 class="font-bold text-2xl">200 + Mladých</h3>
+        </div>
+        <div class="flex flex-row gap-10">
+            <h3 class="font-bold text-2xl">120 + Dospelých</h3>
+        </div>
+        <div class="flex flex-row gap-10">
+            <h3 class="font-bold text-2xl">98% Spokojných klientov</h3>
+        </div>
+        <div class="flex flex-row gap-10">
+            <h3 class="font-bold text-2xl">+ 600h Poradenstva</h3>
+        </div>
+    </x-box>
+</div>
 </section>
 <section class="p-10 container mx-auto">
     <div class="bg-[white] rounded-xl p-8 flex flex-col gap-6">
@@ -213,5 +215,4 @@
         </div>
     </div>
 </section>
-<x-footer/>
 </x-layout>

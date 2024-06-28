@@ -1,5 +1,4 @@
 <x-layout-admin>
-    @forelse ($blogs as $blog)
     <section class="dark:bg-gray-900 p-3 sm:p-5 antialiased">
         <div class="mx-auto max-w-screen-2xl px-4 lg:px-12">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -15,6 +14,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($blogs as $blog)
                             <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <td class="p-4 w-4"></td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -38,7 +38,7 @@
                                             </svg>
                                             Edit
                                         </a>
-                                        <a href="" class="cursor-pointer py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:outline-none bg-white rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        <a href="{{route('blog.show', $blog->slug)}}" class="cursor-pointer py-2 px-3 flex items-center text-sm font-medium text-center text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:outline-none bg-white rounded-lg border border-gray-200 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-2 -ml-0.5">
                                                 <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" />
@@ -54,13 +54,20 @@
                                     </div>
                                 </td>
                             </tr>
-
+                            @empty
+                            <tr>
+                                <td colspan="5" class="px-4 py-3 text-center text-gray-500 dark:text-gray-400">
+                                    Nie je tu žiaden blog. Môžeš ho vytvoriť <a class="underline" href="{{route('blog.create')}}">tu.</a>
+                                </td>
+                            </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </section>
+
     <div id="delete-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full h-auto max-w-md max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -76,7 +83,7 @@
                     </svg>
                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
                     <div class="flex flex-row gap-6 justify-center">
-                        <form action="{{route('blog.destroy', $blog->id)}}" method="POST">
+                        <form action="{{route('blog.destroy', $blog->slug)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" data-modal-toggle="delete-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">Yes, I'm sure</button>
@@ -87,11 +94,4 @@
             </div>
         </div>
     </div>
-    @empty
-    <div class="mx-auto text-center flex justify-center">
-        <h3 class="text-xl text-center">Nie je tu žiaden blog. Môžeš ho vytvoriť <a class="underline" href="{{route('blog.create')}}">tu.</a></h3>
-    </div>
-    @endforelse
-
-    
 </x-layout-admin>

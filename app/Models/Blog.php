@@ -12,7 +12,7 @@ class Blog extends Model
 
     use Sluggable;
 
-    protected $fillable = ['title','slug','content','image','author','category_id'];
+    protected $fillable = ['title','slug','content','image','author','category_id','featured_text'];
 
     public function sluggable(): array
     {
@@ -22,6 +22,12 @@ class Blog extends Model
             ]
         ];
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }

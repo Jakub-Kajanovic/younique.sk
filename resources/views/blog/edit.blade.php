@@ -9,7 +9,7 @@
           </div>
         @endif
     </div>
-    <form method="POST" action="{{ route('blog.update', ['blog' => $blog->id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('blog.update', ['blog' => $blog->slug]) }}" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="max-w-3xl mx-auto">
@@ -18,6 +18,13 @@
                 <input type="text" id="title" name="title" value="{{old('title', $blog->title)}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
                 @error('title')
                 <div class="text-xs text-[red]">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mt-4">
+                <label class="block text-lightGray text-sm font-bold mb-2" for="featured_text">Featured Text</label>
+                <input type="text" id="featured_text" name="featured_text" value="{{old('featured_text', $blog->featured_text)}}" class="shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
+                @error('featured_text')
+                    <div class="text-xs text-[red]">{{ $message }}</div>
                 @enderror
             </div>
             <div class="my-4">

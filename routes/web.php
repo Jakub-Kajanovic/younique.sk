@@ -9,6 +9,9 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
 Route::get('o-nas', [IndexController::class, 'about'])->name('o-nas');
+Route::get('program-pre-mladych', [IndexController::class, 'program_pre_mladych'])->name('program-pre-mladych');
+Route::get('program-pre-dospelych', [IndexController::class, 'program_pre_dospelych'])->name('program-pre-dospelych');
+Route::get('clanky', [IndexController::class, 'blog'])->name('clanky');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 

@@ -4,10 +4,9 @@
     </h1>
     <div>
         @if(session('success'))
-            <p>{{ session('success') }}</p>
-        @endif
-        @if(session('error'))
-            <p>{{ session('error') }}</p>
+        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+            <span class="font-medium">Success alert!</span> {{ session('success') }}
+          </div>
         @endif
     </div>
     <form method="POST" action="{{ route('category.store') }}" enctype="multipart/form-data">

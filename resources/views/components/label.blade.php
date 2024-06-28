@@ -1,0 +1,1 @@
+<label class="font-semibold text-black text-xl" for="{{$slot}}">{{$slot}}</label>
