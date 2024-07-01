@@ -100,7 +100,7 @@
     @endif
         <div class="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-20 justify-items-center container p-8">
             @if ($loop->iteration % 2 == 0)
-                <img class="w-[400px]" src="{{$author->photo}}" class="rounded-xl" alt="">
+                <img class="w-[400px]" src="{{asset('storage/' . $author->photo)}}" class="rounded-xl" alt="">
                 <div class="flex flex-col gap-10">
                     <x-heading class="text-lightBlue">
                         {{$author->name}}
@@ -134,7 +134,7 @@
                         <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->instagram}}"><i class="fa-brands fa-instagram text-3xl text-lightBlue"></i></a>
                     </div>
                 </div>
-                <img class="w-[400px]" src="{{$author->photo}}" class="rounded-xl" alt="">
+                <img class="w-[400px]" src="{{asset('storage/' . $author->photo)}}" class="rounded-xl" alt="">
             @endif
         </div>
     </section>
