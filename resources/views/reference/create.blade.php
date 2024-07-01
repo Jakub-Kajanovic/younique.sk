@@ -12,14 +12,14 @@
             @csrf
             <div class="max-w-3xl mx-auto">
                 <div class="mt-4">
-                    <label class="block text-lightGray text-sm font-bold mb-2" for="name">Názov programu</label>
+                    <label class="block text-lightGray text-sm font-bold mb-2" for="name">Meno a priezvisko</label>
                     <input type="text" value="{{old('name', $reference->name)}}" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
                     @error('name')
                         <div class="text-xs text-[red]">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mt-4">
-                    <label class="block text-lightGray text-sm font-bold mb-2" for="content">Opis programu</label>
+                    <label class="block text-lightGray text-sm font-bold mb-2" for="content">Skúsenosť</label>
                     <input type="text" value="{{old('content', $reference->content)}}" id="content" name="content" class="shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
                     @error('content')
                         <div class="text-xs text-[red]">{{ $message }}</div>
@@ -32,7 +32,7 @@
                     @enderror
                 </div>
                 <div class="mt-4">
-                    <label class="block text-lightGray text-sm font-bold mb-2" for="type">Cena programu</label>
+                    <label class="block text-lightGray text-sm font-bold mb-2" for="type">Typ programu</label>
                     <select value="{{old('type', $reference->type)}}" id="type" name="type" class="shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline">
                     <option value="adult">Adult</option>
                     <option value="youth">Youth</option>

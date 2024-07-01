@@ -205,7 +205,7 @@
         </div>
         <div class="h-auto flex mx-auto p-8">
             <x-swiper-mix :otherReferences="$otherReferences" slides-per-view="3" class="hidden lg:flex"/>
-            <x-swiper-mix slides-per-view="1" class="lg:hidden flex"/>
+            <x-swiper-mix :otherReferences="$otherReferences" slides-per-view="1" class="lg:hidden flex"/>
         </div>
     </section>
 </x-layout>
