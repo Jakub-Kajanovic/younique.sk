@@ -17,7 +17,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20" id="blogs">
                     @foreach ($blogs as $blog)
                     <a href="{{route('blog.show', $blog->slug)}}" class="flex flex-col gap-6 group hover:-translate-y-6 transition duration-700">
-                        <img class="rounded-xl" src="{{$blog->image}}" alt="">
+                        <img class="rounded-xl" src="{{asset('storage/' . $blog->image)}}" alt="">
                         <div class="flex flex-col gap-2">
                             <h3 class="group-hover:text-lightBlue font-semibold text-[20px]">
                                 {{ $blog->title }}
