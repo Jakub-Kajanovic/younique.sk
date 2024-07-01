@@ -27,6 +27,15 @@ class Blog extends Model
     {
         return 'slug';
     }
+    public function getReadingTime()
+    {
+        $wordCount = str_word_count(strip_tags($this->content));
+        $wordsPerMinute = 200; // Môžeš upraviť podľa potreby
+
+        $readingTimeMinutes = ceil($wordCount / $wordsPerMinute);
+
+        return $readingTimeMinutes;
+    }
     
     public function category(){
         return $this->belongsTo(Category::class);

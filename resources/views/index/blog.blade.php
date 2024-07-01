@@ -12,7 +12,7 @@
                 <x-tag><a href="{{ route('clanky', ['category_id' => $category->id]) }}#blogs">{{ $category->name }}</a></x-tag>
             @endforeach
         </div>
-        <div class="grid lg:grid-cols-3 grid-cols-1 justify-items-center">
+        <div class="grid lg:grid-cols-3 grid-cols-1 gap-10 justify-items-center">
             <div class="col-span-2 flex flex-row gap-20 lg:mr-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-20" id="blogs">
                     @foreach ($blogs as $blog)

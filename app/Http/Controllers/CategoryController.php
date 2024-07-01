@@ -12,23 +12,24 @@ class CategoryController extends Controller
     {
         Auth::user();
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        return view('category.index', compact('categories'));
     }
 
-    public function create()
+    public function create(Category $category)
     {
         Auth::user();
-        return view('category.create');
+        $categories = Category::all();
+        return view('category.create', compact('category'));
     }
 
     public function store(Request $request)
     {
         Auth::user();
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required',
         ]);
 
-        Category::create($request->all());
+        Category::create($data);
         return redirect()->route('category.create')->with('success', 'Category created successfully.');
     }
 
@@ -43,7 +44,6 @@ class CategoryController extends Controller
         Auth::user();
         $request->validate([
             'name' => 'required',
-            'slug' => 'required|unique:categories,slug,' . $category->id,
         ]);
 
         $category->update($request->all());
@@ -54,6 +54,6 @@ class CategoryController extends Controller
     {
         Auth::user();
         $category->delete();
-        return redirect()->route('category.create')->with('success', 'Category deleted successfully.');
+        return redirect()->route('category.index')->with('success', 'Category deleted successfully.');
     }
 }

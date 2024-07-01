@@ -1,4 +1,5 @@
 <x-layout>
+<div class="h-screen">
     <form method="POST" action="{{route('login.store')}}">
         @csrf
         <div class="w-1/2 mx-auto max-w-md">
@@ -19,4 +20,5 @@
             </div>
         </div>
     </form>
+</div>
 </x-layout>

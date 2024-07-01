@@ -1,3 +1,13 @@
+@php
+    function decodeAndAllowTags($short_bio) {
+        $decodedContent = html_entity_decode($short_bio);
+        return strip_tags($decodedContent, '<p><a><b><strong><i><em><ul><ol><li><br><img>');
+    }
+    function decodeAndAllowTags2($bio) {
+        $decodedContent2 = html_entity_decode($bio);
+        return strip_tags($decodedContent2, '<p><a><b><strong><i><em><ul><ol><li><br><img>');
+    }
+@endphp
 <x-layout>
 <section class="purple-finger">
 <div class="mx-auto container flex flex-col items-center gap-10 p-8">
@@ -12,7 +22,7 @@
             <h3 class="font-bold text-2xl">120 + Dospelých</h3>
         </div>
         <div class="flex flex-row gap-10">
-            <h3 class="font-bold text-2xl">98% Spokojných klientov</h3>
+            <h3 class="font-bold text-2xl">20+ workshopov</h3>
         </div>
         <div class="flex flex-row gap-10">
             <h3 class="font-bold text-2xl">+ 600h Poradenstva</h3>
@@ -82,74 +92,53 @@
         </x-card>
     </div>
 </section>
-<section class="lg:py-20 bg-[#C7DAFC] purple-finger">
-    <div class="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-20 container p-8">
-        <img src="https://placehold.co/600x800" class="rounded-xl" alt="">
-        <div class="flex flex-col gap-10">
-            <x-heading class="text-lightBlue">
-                Mgr. Bibiána Čermáková
-            </x-heading>
-            <ul class="text-[#424242] font-semibold text-[20px] space-y-2">
-                <li>Pedagóg</li>
-                <li>certifikovaný kariérny poradca, člen Asociácie lektorov a kariérnych poradcov</li>
-                <li>Kouč a vzťahový kouč s medzinárodným cerfifikátom ICF</li>
-            </ul>
-            <x-paragraph>
-                Viem aké to je, keď robíte prácu, ktorá vám nesedí. 15 rokov som sa trápila v nesprávnych povolaniach. Našťastie som popri nich
-                vždy doučovala mladých a "ťahala" z nich, v čom sú vlastne dobrí. To sme potom využili na to, aby zvládli školu, maturity, či
-                prijímačky.
-
-                No nebavilo ma už neustále o sebe pochybovať a chodiť do práce len z povinnosti. Prešla som dlhú cestu, kým som sa stala
-                poradcom pre výber školy a povolania.
-
-                Dnes viem, že sa to dá ľahšie! Že o sebe nemusím pochybovať, ani sa hľadať do 40tky. Pretože, keď viem, čo mi ide prirodzene ide
-                a baví ma, žije sa mi ľahšie.
-
-                Chcela som, aby mali moje deti ľahšie rozhodovanie kam chcú v živote smerovať! Aby si vybrali školu a neskôr prácu podľa toho,
-                na čo majú nadanie a baví ich. A aby o sebe nepochybovali pretože majú potvrdené, čo im naozaj ide.
-            </x-paragraph>
-            <div class="flex flex-row gap-4">
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-linkedin text-3xl text-lightBlue"></i></a>
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-facebook text-3xl text-lightBlue"></i></a>
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-instagram text-3xl text-lightBlue"></i></a>
-            </div>
+@foreach ($authors as $author)
+    @if ($loop->iteration % 2 == 0)
+        <section id="{{$author->id}}" class="lg:py-20 blue-finger">
+    @else
+        <section id="{{$author->id}}" class="lg:py-20 bg-[#C7DAFC] purple-finger">
+    @endif
+        <div class="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-20 justify-items-center container p-8">
+            @if ($loop->iteration % 2 == 0)
+                <img class="w-[400px]" src="{{$author->photo}}" class="rounded-xl" alt="">
+                <div class="flex flex-col gap-10">
+                    <x-heading class="text-lightBlue">
+                        {{$author->name}}
+                    </x-heading>
+                    <div>
+                        {!! decodeAndAllowTags($author->short_bio) !!}
+                    </div>
+                    <x-paragraph>
+                        {!! decodeAndAllowTags2($author->bio) !!}
+                    </x-paragraph>
+                    <div class="flex flex-row gap-4">
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->linkedin}}"><i class="fa-brands fa-linkedin text-3xl text-lightBlue"></i></a>
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->facebook}}"><i class="fa-brands fa-facebook text-3xl text-lightBlue"></i></a>
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->instagram}}"><i class="fa-brands fa-instagram text-3xl text-lightBlue"></i></a>
+                    </div>
+                </div>
+            @else
+                <div class="flex flex-col gap-10">
+                    <x-heading class="text-lightBlue">
+                        {{$author->name}}
+                    </x-heading>
+                    <div>
+                        {!! decodeAndAllowTags($author->short_bio) !!}
+                    </div>
+                    <x-paragraph>
+                        {!! decodeAndAllowTags2($author->bio) !!}
+                    </x-paragraph>
+                    <div class="flex flex-row gap-4">
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->linkedin}}"><i class="fa-brands fa-linkedin text-3xl text-lightBlue"></i></a>
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->facebook}}"><i class="fa-brands fa-facebook text-3xl text-lightBlue"></i></a>
+                        <a class="hover:scale-110 hover:duration-700" target="__blank" href="{{$author->instagram}}"><i class="fa-brands fa-instagram text-3xl text-lightBlue"></i></a>
+                    </div>
+                </div>
+                <img class="w-[400px]" src="{{$author->photo}}" class="rounded-xl" alt="">
+            @endif
         </div>
-    </div>
-</section>
-<section class="lg:py-20 blue-finger">
-    <div class="grid grid-cols-1 lg:grid-cols-2 mx-auto gap-20 container p-8">
-        <div class="flex flex-col gap-10">
-            <x-heading class="text-lightBlue">
-                Mgr. Bibiána Čermáková
-            </x-heading>
-            <ul class="text-[#424242] font-semibold text-[20px] space-y-2">
-                <li>Pedagóg</li>
-                <li>certifikovaný kariérny poradca, člen Asociácie lektorov a kariérnych poradcov</li>
-                <li>Kouč a vzťahový kouč s medzinárodným cerfifikátom ICF</li>
-            </ul>
-            <x-paragraph>
-                Viem aké to je, keď robíte prácu, ktorá vám nesedí. 15 rokov som sa trápila v nesprávnych povolaniach. Našťastie som popri nich
-                vždy doučovala mladých a "ťahala" z nich, v čom sú vlastne dobrí. To sme potom využili na to, aby zvládli školu, maturity, či
-                prijímačky.
-
-                No nebavilo ma už neustále o sebe pochybovať a chodiť do práce len z povinnosti. Prešla som dlhú cestu, kým som sa stala
-                poradcom pre výber školy a povolania.
-
-                Dnes viem, že sa to dá ľahšie! Že o sebe nemusím pochybovať, ani sa hľadať do 40tky. Pretože, keď viem, čo mi ide prirodzene ide
-                a baví ma, žije sa mi ľahšie.
-
-                Chcela som, aby mali moje deti ľahšie rozhodovanie kam chcú v živote smerovať! Aby si vybrali školu a neskôr prácu podľa toho,
-                na čo majú nadanie a baví ich. A aby o sebe nepochybovali pretože majú potvrdené, čo im naozaj ide.
-            </x-paragraph>
-            <div class="flex flex-row gap-4">
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-linkedin text-3xl text-lightBlue"></i></a>
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-facebook text-3xl text-lightBlue"></i></a>
-                <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-instagram text-3xl text-lightBlue"></i></a>
-            </div>
-        </div>
-        <img src="https://placehold.co/600x800" class="rounded-xl" alt="">
-    </div>
-</section>
+    </section>
+@endforeach
 <section class="py-20 blue-finger bg-[#C7DAFC]">
     <div class="mx-auto container p-8">
         <x-heading class="pb-20">

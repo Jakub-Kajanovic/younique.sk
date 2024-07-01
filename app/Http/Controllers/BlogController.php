@@ -49,8 +49,9 @@ class BlogController extends Controller
     }
     public function show(Blog $blog)
     {
+        $readingTime = $blog->getReadingTime();
         $blog->load('category');
-        return view('blog.show', compact('blog'));
+        return view('blog.show', compact('blog', 'readingTime'));
     }
 
     /**

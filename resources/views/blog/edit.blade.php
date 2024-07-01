@@ -1,4 +1,5 @@
 <x-layout-admin>
+    <x-breadcrumbs :links="['Admin' => route('dashboard'), 'Všetky články' => route('blog.index'), 'Úprava článku' => '#']" class="mb-4" />
     <h1 class="text-3xl font-bold text-center text-lightGray">
         Edit blog
     </h1>
@@ -50,9 +51,17 @@
             </div>
             <div class="my-4">
                 <label class="block text-lightGray text-sm font-bold mb-2" for="image">Hlavný Obrázok</label>
-                <input type="file" id="image" name="image" value="{{old('image', $blog->image)}}" class="editor shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
+                
+                @if($blog->image)
+                    <div class="mb-4">
+                        <img src="{{ asset('storage/' . $blog->image) }}" alt="Current photo" class="w-32 h-32 object-cover">
+                    </div>
+                @endif
+            
+                <input type="file" id="image" name="image" class="editor shadow appearance-none border rounded w-full py-2 px-3 text-lightGray leading-tight focus:outline-none focus:shadow-outline"/>
+                
                 @error('image')
-                <div class="text-xs text-[red]">{{ $message }}</div>
+                    <div class="text-xs text-[red]">{{ $message }}</div>
                 @enderror    
             </div>
             <textarea name="content" id="myeditorinstance" class="editor" value="{{old('content', $blog->content)}}">{{old('content', $blog->content)}}</textarea>

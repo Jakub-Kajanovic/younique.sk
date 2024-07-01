@@ -1,1 +1,1 @@
-<p {{$attributes(['class' => 'text-lightGray text-md lg:text-xl md:text-xl'])}}>{{$slot}}</p>
+<p {{$attributes(['class' => 'text-black text-md lg:text-xl md:text-xl'])}}>{{$slot}}</p>

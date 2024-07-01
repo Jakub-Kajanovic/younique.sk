@@ -8,9 +8,6 @@
                 <h2 class="font-semibold text-xl">{{$blog->title}}</h2>
                 <a href="{{route('blog.show', $blog->slug)}}" class="hover:text-lightBlue">Čítaj viac <span class="underline">tu!</span></a>
             </div>
-        </swiper-slide>
-        @endforeach
-
-
-
+    </swiper-slide>
+    @endforeach
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

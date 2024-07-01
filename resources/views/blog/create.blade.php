@@ -1,4 +1,5 @@
 <x-layout-admin>
+    <x-breadcrumbs :links="['Admin' => route('dashboard'), 'Všetky články' => route('blog.index'), 'Vytvorenie článku' => '#']" class="mb-4" />
     <h1 class="text-3xl font-bold text-center text-lightGray">
         Nový blog
     </h1>
@@ -54,7 +55,7 @@
                     <div class="text-xs text-[red]">{{ $message }}</div>
                 @enderror    
             </div>
-            <textarea name="content" id="myeditorinstance" value="{{old('content', $blog->content)}}">Sem napíš o čom bude tvoj blog!</textarea>
+            <textarea name="content" id="myeditorinstance" value="{{old('content', $blog->content)}}">{{old('content', $blog->content)}}</textarea>
             <div class="mt-4">
                 <button type="submit" class="px-6 py-2 rounded-md hover:scale-110 hover:duration-700 text-[white] bg-lightBlue">Vytvoriť</button>
             </div>

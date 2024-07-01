@@ -8,12 +8,15 @@
 <section>
 <div class="mx-auto container p-8 flex flex-col items-center gap-20">
     <img class="shadow-xl rounded-xl" src="https://placehold.co/1200x600" alt="">
-    <div class="grid lg:grid-cols-3 grid-cols-1 justify-items-center">
+    <div class="grid lg:grid-cols-3 grid-cols-1 gap-10 justify-items-center">
         <div class="col-span-2 flex flex-row gap-20">
             <div class="flex flex-col gap-4">
-                <div class="flex flex-row justify-between p-8">
-                    <p>{{$blog->author}}</p>
-                    <p>{{$blog->created_at}}</p>
+                <div class="flex flex-col lg:flex-row justify-between p-8">
+                    <div>
+                        <p>{{$blog->author}}</p>
+                        <p>{{$blog->created_at}}</p>
+                    </div>
+                    <p>Odhadovaný čas čítania: {{ $readingTime }} minút</p>
                 </div>
                 <x-heading>{{$blog->title}}</x-heading>
                 <x-paragraph>{!! decodeAndAllowTags($blog->content) !!}</x-paragraph>
@@ -21,7 +24,7 @@
         </div>
         <div>
             <x-card class="space-y-4 sticky">
-                <img src="images/logo.svg" alt="">
+                <img src="/images/logo.svg" alt="">
                 <div class="flex flex-row items-center gap-4">
                     <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-linkedin text-3xl text-lightBlue"></i></a>
                     <a class="hover:scale-110 hover:duration-700" href=""><i class="fa-brands fa-facebook text-3xl text-lightBlue"></i></a>

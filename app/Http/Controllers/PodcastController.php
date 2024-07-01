@@ -12,7 +12,7 @@ class PodcastController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

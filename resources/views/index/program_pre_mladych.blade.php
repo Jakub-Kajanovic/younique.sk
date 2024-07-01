@@ -45,7 +45,7 @@
                 <x-heading>Dáte mu tak sebadôveru a istotu, kam chce v živote smerovať.</x-heading>
                 <x-heading>A to je tá najlepšia motivácia.</x-heading>
             </div>
-            <h2 class="font-semibold text-xl text-lightBlue pb-10">Program pre mladých</h2>
+            <h2 class="font-semibold text-xl text-lightBlue pb-10">{{$course->title}}</h2>
             <div class="grid lg:grid-cols-2 grid-cols-1">
                 <div class="flex flex-col gap-4">
                     <x-check>
@@ -73,7 +73,7 @@
                         nič si nemusíš pamätať, výsledky a odporúčania dostaneš aj v .pdf
                     </x-check>
                     <div class="flex lg:flex-row flex-col gap-6 lg:pt-[88px] pt-10 items-center">
-                        <p class="text-2xl font-semibold text-lightBlue">497€</p>
+                        <p class="text-2xl font-semibold text-lightBlue">{{$course->price}}€</p>
                         <p class="text-md font-semibold text-[#424242]">Príde ti to veľa? Môžeš za to mať radšej starý
                             iPhone. Je len na tebe do čoho investuješ.</p>
                     </div>
@@ -98,7 +98,7 @@
     </section>
     <section>
         <div class="mx-auto container p-8">
-            <x-heading class="text-lightBlue text-center">ROBÍME TO INAK. AKO?</x-heading>
+            <x-heading class="text-lightBlue text-center">MY TO ROBÍME TAKTO</x-heading>
             <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-10 lg:py-20 py-10">
                 <img src="https://placehold.co/600x400" alt="">
                 <div class="flex flex-col gap-6">

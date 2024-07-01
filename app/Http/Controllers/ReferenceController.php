@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reference;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReferenceController extends Controller
 {
@@ -12,7 +13,12 @@ class ReferenceController extends Controller
      */
     public function index()
     {
-        //
+        Auth::check();
+        $youthReferences = Reference::where('type', 'youth')->get();
+        $adultReferences = Reference::where('type', 'adult')->get();
+        $otherReferences = Reference::where('type', 'other')->get();
+
+        return view('reference.index', compact('youthReferences', 'adultReferences', 'otherReferences'));
     }
 
     /**
@@ -28,38 +34,39 @@ class ReferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Auth::check();
+        Reference::create($request->all());
+        return redirect()->route('reference.index')->with('success', 'Reference created successfully');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Reference $reference)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Reference $reference)
     {
-        //
+        Auth::check();
+        $youthReferences = Reference::where('type', 'youth')->get();
+        $adultReferences = Reference::where('type', 'adult')->get();
+        $otherReferences = Reference::where('type', 'other')->get();
+        return view('reference.edit', compact('reference', 'youthReferences', 'adultReferences', 'otherReferences'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Reference $reference)
+    public function update(Request $request, $id)
     {
-        //
+        Auth::check();
+        $reference = Reference::findOrFail($id);
+        $reference->update($request->all());
+        return redirect()->route('reference.index')->with('success', 'Reference updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reference $reference)
+    public function destroy($id)
     {
-        //
+            Auth::check();
+            $reference = Reference::findOrFail($id);
+            $reference->delete();
+    
+            return redirect()->route('reference.index')->with('success', 'Reference deleted successfully');  
     }
 }

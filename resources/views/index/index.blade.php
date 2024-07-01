@@ -2,11 +2,11 @@
    <section class="main">
     <div class="container mx-auto grid lg:grid-cols-2 p-8 lg:pt-20">
     <div class="flex flex-col gap-10">
-        <x-heading class="lg:w-[90%] md:w-full w-[80%]"><span class="text-lightBlue">YouNique spájame</span>, psychológiu
-            koučing a kariérne poradenstvo.</x-heading>
+        <x-heading class="lg:w-[90%] md:w-full w-[80%]"><span class="text-lightBlue">V youNique prepájame </span>psychológiu, koučing<br class="flex lg:hidden md:hidden"> a kariérne poradenstvo.
+            </x-heading>
         <div class="flex flex-col gap-2">
-            <x-paragraph>
-                Zistíme, aká škola alebo práca je pre teba tá správna. Vďaka spojeniu 3 odborníkovmôžeš aj TY naplno využívať svoje schopnosti.
+            <x-paragraph>           
+                Zistíme, aká škola alebo práca je pre teba tá správna. Vďaka spojeniu 3 odborníkov môžeš aj TY naplno využívať svoje schopnosti. 
             </x-paragraph>
             <x-paragraph>
                 Študuj a rob, čo ti ide prirodzene a baví ťa!
@@ -25,7 +25,10 @@
     <div class="py-10 lg:py-0">
         <img src="https://placehold.co/600x400" alt="">
     </div>
-    </div>
+</div>
+    <h2 class="font-semibold text-md lg:text-xl md:text-xl text-lightGray mt-4 text-center">Nehráme sa kariérne hry. Netrápime ťa vyčerpávajúcimi rozhovormi. 
+    Testami zistíme, aké máš
+    </h2>
     <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-20 py-20 p-8">
         <x-card>
             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,8 +103,14 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 container mx-auto gap-20 pb-20 p-8">
         <x-card class="p-12">
             <x-heading class="text-center py-10">
-                Program <span class="text-lightBlue">pre mladých</span>
+                <span class="text-lightBlue">{{$program_pre_mladych->title}}</span>
             </x-heading>
+            <x-paragraph class="py-4 text-center">
+                <strong>Vyber si správnu strednú alebo vysokú školu</strong>  
+            </x-paragraph>
+            <x-paragraph class="text-center pb-4">
+                Zistíme
+            </x-paragraph>                
                 <div class="flex flex-col gap-4">
                     <x-check>
                         na akú školu/povolania máš predpoklady
@@ -119,16 +128,22 @@
                         poradíš sa s koučom a kariérnym poradcom
                     </x-check>
                 </div>
-            <p class="py-10 font-medium text-xl text-center">Vyber si správnu strednú alebo vysokú školu.<br> Zisti, ktorá práca je pre teba.</p>
-            <p class="text-center text-lightBlue text-3xl font-bold">497 €</p>
+            <p class="py-10 font-medium text-xl text-center">Zisti, ktorá je pre teba.            </p>
+            <p class="text-center text-lightBlue text-3xl font-bold">{{$program_pre_mladych->price}} €</p>
             <div class="text-center mt-10">
-                <x-button-primary>Pripojiť sa na kurz</x-button-primary>
+                <a class="rounded-md px-3 py-3 bg-[#6A9AF8] text-[#fff] hover:scale-110 hover:duration-700 hover:bg-[#6A9AF9]" href="{{route('program-pre-mladych')}}">Zisti viac</a>
             </div>
         </x-card>
         <x-card class="p-12">
             <x-heading class="text-center py-10">
-                Program <span class="text-lightBlue">pre mladých</span>
+                <span class="text-lightBlue">{{$program_pre_dospelych->title}}</span>
             </x-heading>
+            <x-paragraph class="py-4 text-center">
+                <strong>Vyber si správnu prácu a rob, čo ťa baví</strong>  
+            </x-paragraph>
+            <x-paragraph class="text-center pb-4">
+                Zistíme
+            </x-paragraph>  
                 <div class="flex flex-col gap-4">
                     <x-check>
                         na aké povolania a činnosti máš predpoklady
@@ -149,10 +164,10 @@
                         uistíme ťa, či vziať zaujímavú prácu, povýšenie alebo podnikať
                     </x-check>
                 </div>
-            <p class="py-10 font-medium text-xl text-center">Vyber si správnu strednú alebo vysokú školu.<br> Zisti, ktorá práca je pre teba.</p>
-            <p class="text-center text-lightBlue text-3xl font-bold">497 €</p>
+            <p class="py-10 font-medium text-xl text-center">Využívaj lepšie svoje schopnosti</p>
+            <p class="text-center text-lightBlue text-3xl font-bold">{{$program_pre_dospelych->price}} €</p>
             <div class="text-center mt-10">
-                <x-button-primary>Pripojiť sa na kurz</x-button-primary>
+                <a class="rounded-md px-3 py-3 bg-[#6A9AF8] text-[#fff] hover:scale-110 hover:duration-700 hover:bg-[#6A9AF9]" href="{{route('program-pre-dospelych')}}">Zisti viac</a>
             </div>
         </x-card>
     </div>
@@ -189,12 +204,8 @@
             <x-heading>Ako sa im náš program páčil?</x-heading>
         </div>
         <div class="h-auto flex mx-auto p-8">
-            <x-swiper-mix slides-per-view="3" class="hidden lg:flex"/>
+            <x-swiper-mix :otherReferences="$otherReferences" slides-per-view="3" class="hidden lg:flex"/>
             <x-swiper-mix slides-per-view="1" class="lg:hidden flex"/>
-        </div>
-        <div class="mx-auto container text-center py-20">
-            <x-button-primary>Pripojiť sa na kurz</x-button-primary>
         </div>
     </section>
 </x-layout>
-
