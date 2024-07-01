@@ -24,9 +24,10 @@ class ReferenceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Reference $reference)
     {
-        return view('reference.create');
+        Auth::check();
+        return view('reference.create', compact('reference'));
     }
 
     /**
