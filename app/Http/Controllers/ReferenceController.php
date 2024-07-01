@@ -26,7 +26,7 @@ class ReferenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('reference.create');
     }
 
     /**
@@ -37,11 +37,6 @@ class ReferenceController extends Controller
         Auth::check();
         Reference::create($request->all());
         return redirect()->route('reference.index')->with('success', 'Reference created successfully');
-    }
-
-    public function show(Reference $reference)
-    {
-        //
     }
 
     public function edit(Reference $reference)
